@@ -1,0 +1,22 @@
+.selected-in, .selected-out {
+	position: absolute;
+  	width: 200px;
+  	height: 100px;
+	top : 0;
+	left: 0;
+}
+
+.selected-in {
+	width: 0;
+	z-index: 10; 
+}
+
+.selected-out {
+	width: 200px;
+	z-index: 1;
+}
+
+.selected-text {
+	position: relative;
+	z-index: 25;
+}

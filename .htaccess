@@ -1,0 +1,27 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^collections\/steel\/ /collections/military/ [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+
+#	^	^beginning
+#	$	end$
+
+#	-	perform no replacement and exit loop
+
+#	[L]	stop processing remaining rules
+#	!	negation
+#	-f	does file exist on the system
+#	-d	does directory exist on the system
+
+#	%{REQUEST_FILENAME}		a variable based on the url you request
+	
