@@ -39,13 +39,13 @@
 						<img src="<?php echo content_url(); ?>/uploads/2013/10/cropped-KLNpng.fw_.png" alt="Logo" class="logo-img">
 					</a>
 				</div>
-				<? if (is_front_page()) { ?>
+				<!--<? if (is_front_page()) { ?>
 				<nav class="nav" role="navigation">
 					<?php kln_homepage_nav(); ?>
                 </nav>
-				<?php } else { ?>
+				<?php } else { ?> 
                 <nav class="blackbar" role="navigation">
 					<?php kln_products_nav('collections-nav', 'header');?>
 				</nav>
-				<?php } ?>
+				<?php } ?> -->
 			</header>
