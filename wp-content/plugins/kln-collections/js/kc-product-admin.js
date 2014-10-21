@@ -1,5 +1,6 @@
 
 jQuery(document).ready(function($) {
+	console.log("Document Ready");
 
 	var post_id = $('#post_ID').val();
 	
@@ -117,7 +118,32 @@ jQuery(document).ready(function($) {
 		});
 	});
 	
+	var dz = new Dropzone("#dropzone-element", {
+		url: ajaxurl + "?action=upload_new_custom_product_file&post_id=" + post_id,
+		headers: {
+			"Accepts": "application/json"
+		},
+		success: function(file, response, xhr) {
+			var data = $.parseJSON(response);
+			if (data.success)
+				location.reload();
+			else
+				console.log(data);
+		},
+		error: function(file, response, xhr) {
+			console.log("Error", arguments);
+		}
+	});
 
+	$('#add-product-image').click(function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+
+
+		console.log("Add Product Image", event);
+	});
+
+	
 	$('#submit-product-image-metadata').click(function(event) {
 		event.preventDefault();
 		event.stopPropagation();

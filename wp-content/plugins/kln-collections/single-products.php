@@ -11,8 +11,11 @@
 
             <?php 	
             $product_id = get_queried_object()->term_id; //Get ID of current term
-			$term = current(get_the_terms(get_the_id(), 'kln_collection'));
-			walk_products($terms->term_id, 'kln_collection', 'Collections');
+            $terms = get_the_terms(get_the_id(), 'kln_collection');
+            if ($terms) {
+    			$term = current($terms);
+                walk_products($terms->term_id, 'kln_collection', 'Collections');
+            }
             ?>
                     
         </aside>
