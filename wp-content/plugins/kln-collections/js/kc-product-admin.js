@@ -1,7 +1,6 @@
 
 jQuery(document).ready(function($) {
-	console.log("Document Ready");
-
+	/*
 	var post_id = $('#post_ID').val();
 	
 	$('select[name=term-modifier]').change(function() {
@@ -117,7 +116,7 @@ jQuery(document).ready(function($) {
 			$parent.remove();
 		});
 	});
-	
+	*/
 	var dz = new Dropzone("#dropzone-element", {
 		url: ajaxurl + "?action=upload_new_custom_product_file&post_id=" + post_id,
 		headers: {
@@ -135,15 +134,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('#add-product-image').click(function(event) {
-		event.preventDefault();
-		event.stopPropagation();
-
-
-		console.log("Add Product Image", event);
-	});
-
-	
+	/*	
 	$('#submit-product-image-metadata').click(function(event) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -171,4 +162,5 @@ jQuery(document).ready(function($) {
 		});
 		return false;
 	});
+*/
 });
