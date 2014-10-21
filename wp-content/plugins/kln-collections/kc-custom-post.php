@@ -21,7 +21,7 @@ add_action('wp_ajax_update_product_spec_metadata', 'update_product_spec_metadata
 add_action('wp_ajax_add_new_meta_data_blank', 'add_new_meta_data_blank');
 add_action('wp_ajax_remove_meta_data_blank', 'remove_meta_data_blank');
 
-add_action('wp_ajax_upload_new_custom_product_file', 'upload_new_custom_product_file');
+add_action('wp_ajax_init_dropzone', 'upload_new_custom_product_file');
 
 add_action('wp_ajax_get_selected_collection', 'get_selected_collection');
 add_action('wp_ajax_nopriv_get_selected_collection', 'get_selected_collection');
@@ -43,10 +43,14 @@ $taxonomyName = 'Collection';
 $customPageType = 'kln_products';
 $customPageName = 'Product';
 
-add_action('admin_enqueue_scripts', function() {
-	wp_enqueue_style('kc-admin-css', plugins_url().'/kln-collections/css/kc-admin.css'); 
-	wp_enqueue_script('kc-admin-js', plugins_url().'/kln-collections/js/kc-product-admin.js', ['dropzone']); 
-	wp_enqueue_script('dropzone', '//cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js');
+add_action('admin_enqueue_scripts', function($hook) {
+
+	if ($hook == 'post.php') {
+		wp_enqueue_style('kc-admin-css', plugins_url().'/kln-collections/css/kc-admin.css'); 
+		wp_enqueue_script('kc-admin-js', plugins_url().'/kln-collections/js/kc-product-admin.js', ['dropzone']); 
+		wp_enqueue_script('dropzone', '//cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js');
+	}
+	
 });
 
 function replace_term_description($description, $title) { 

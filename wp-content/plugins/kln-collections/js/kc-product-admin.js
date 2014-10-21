@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function($) {
-	/*
 	var post_id = $('#post_ID').val();
+	/*
 	
 	$('select[name=term-modifier]').change(function() {
 		var term = $(this).val();
@@ -117,22 +117,24 @@ jQuery(document).ready(function($) {
 		});
 	});
 	*/
-	var dz = new Dropzone("#dropzone-element", {
-		url: ajaxurl + "?action=upload_new_custom_product_file&post_id=" + post_id,
-		headers: {
-			"Accepts": "application/json"
-		},
-		success: function(file, response, xhr) {
-			var data = $.parseJSON(response);
-			if (data.success)
-				location.reload();
-			else
-				console.log(data);
-		},
-		error: function(file, response, xhr) {
-			console.log("Error", arguments);
-		}
-	});
+	if ($("#dropzone-element").length > 0) {
+		var dz = new Dropzone("#dropzone-element", {
+			url: ajaxurl + "?action=init_dropzone&post_id=" + post_id,
+			headers: {
+				"Accepts": "application/json"
+			},
+			success: function(file, response, xhr) {
+				var data = $.parseJSON(response);
+				if (data.success)
+					location.reload();
+				else
+					console.log(data);
+			},
+			error: function(file, response, xhr) {
+				console.log("Error", arguments);
+			}
+		});
+	}
 
 	/*	
 	$('#submit-product-image-metadata').click(function(event) {
